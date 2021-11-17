@@ -42,7 +42,7 @@ class AuthenticateUserUseCase {
       user: {
         name: user.name,
         email: user.email,
-        isAdmin: user.isAdmin,
+        // isAdmin: user.isAdmin,
       },
     };
     return tokenReturn;
