@@ -19,7 +19,7 @@
       ],
       "@utils/*": [
         "utils/*"
-      ],
+      ]
     },
     "esModuleInterop": true,
     "experimentalDecorators": true,
@@ -28,6 +28,6 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "outDir": "./dist",
-    "strictPropertyInitialization": false,
+    "strictPropertyInitialization": false
   }
 }

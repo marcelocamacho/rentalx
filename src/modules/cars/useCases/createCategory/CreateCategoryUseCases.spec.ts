@@ -27,11 +27,6 @@ describe("Create Category", () => {
     const categoryCreated = await categoriesRepositoryInMemory.findByName(
       category.name
     );
-<<<<<<< HEAD
-    console.log(categoryCreated);
-=======
-
->>>>>>> Testes automatizados para useCase de Usuários
     expect(categoryCreated).toHaveProperty("id");
   });
 
@@ -46,14 +41,11 @@ describe("Create Category", () => {
         name: category.name,
         description: category.description,
       });
-<<<<<<< HEAD
-=======
 
       await createCategoryUseCase.execute({
         name: category.name,
         description: category.description,
       });
->>>>>>> Testes automatizados para useCase de Usuários
     }).rejects.toBeInstanceOf(AppError);
   });
 });
