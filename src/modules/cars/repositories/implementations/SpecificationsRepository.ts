@@ -13,7 +13,7 @@ class SpecificationsRepository implements ISpecificationsRepository {
   private static INSTANCE: SpecificationsRepository;
   private repository: Repository<Specification>;
 
-  private constructor() {
+  constructor() {
     this.repository = getRepository(Specification);
   }
 
