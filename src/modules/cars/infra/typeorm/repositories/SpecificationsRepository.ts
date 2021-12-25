@@ -6,8 +6,6 @@ import {
   ICreateSpecificationDTO,
 } from "@modules/cars/repositories/ISpecificationsRepository";
 
-// singleton
-
 class SpecificationsRepository implements ISpecificationsRepository {
   private repository: Repository<Specification>;
 
