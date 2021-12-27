@@ -26,7 +26,7 @@ describe("Create car", () => {
   it("Show not be able to create a new car", async () => {
     expect(async () => {
       await createCarUseCase.execute({
-        name: "Car 1",
+        name: "Car Available",
         description: "description car",
         daily_rate: 100,
         license_plate: "abc-1234",
