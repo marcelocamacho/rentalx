@@ -13,7 +13,7 @@ const listAvailableCarsController = new ListAvailableCarsController();
 carsRoutes.post(
   "/",
   ensureAuthenticated,
-  // ensureAdmin,
+  ensureAdmin,
   createCarController.handle
 );
 
