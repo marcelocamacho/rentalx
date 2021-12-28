@@ -5,15 +5,15 @@ import swaggerUi from "swagger-ui-express";
 import "reflect-metadata";
 
 import { AppError } from "@shared/errors/AppError";
+import createConnection from "@shared/infra/typeorm";
 
 import swaggerFile from "../../../swagger.json";
 import { router } from "./routes";
-import "@shared/infra/typeorm";
 
 import "@shared/container";
 
 const app = express();
-
+createConnection();
 app.use(express.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use(router);
