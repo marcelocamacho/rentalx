@@ -5,6 +5,7 @@ import { AppError } from "@shared/errors/AppError";
 import { Rental } from "../infra/entities/Rental";
 
 import { IRentalsRepository } from "../repositories/IRentalsRepository";
+import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
 
 //Se não usar isso ele retorna a diferença entre datas errado.
 dayjs.extend(utc);
@@ -17,7 +18,9 @@ interface IRequest {
 }
 
 class CreateRentalUseCase {
-  constructor(private rentalsRepository: IRentalsRepository) {}
+  constructor(
+      private rentalsRepository: IRentalsRepository,
+      private dateProvider: IDateProvider) {}
 
   async execute({
     user_id,
@@ -40,15 +43,8 @@ class CreateRentalUseCase {
     }
 
     // O aluguel deve ter duração mínima de 24 horas;
-
-    const expectedReturnDateFormat = dayjs(expected_return_date)
-        .utc()
-        .local()
-        .format();
-
-    const dateNow = dayjs().utc().local().format();
-
-    const compare = dayjs(expectedReturnDateFormat).diff(dateNow,"hours");
+    const dateNow = this.dateProvider.dateNow();
+    const compare = this.dateProvider.compareInHours(dateNow,expected_return_date);
 
     if(compare < minimunHoursOfRentals){
         throw new AppError("Ivalid return time!");
