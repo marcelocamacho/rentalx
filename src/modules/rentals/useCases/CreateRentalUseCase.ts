@@ -2,10 +2,11 @@
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import { AppError } from "@shared/errors/AppError";
-import { Rental } from "../infra/entities/Rental";
+import { Rental } from "../infra/typeorm/entities/Rental";
 
 import { IRentalsRepository } from "../repositories/IRentalsRepository";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
+import { inject, injectable } from "tsyringe";
 
 //Se não usar isso ele retorna a diferença entre datas errado.
 dayjs.extend(utc);
@@ -17,9 +18,12 @@ interface IRequest {
   expected_return_date: Date;
 }
 
+@injectable()
 class CreateRentalUseCase {
   constructor(
+      @inject("RentalsRepository")
       private rentalsRepository: IRentalsRepository,
+      @inject("DayjsDateProvider")
       private dateProvider: IDateProvider) {}
 
   async execute({

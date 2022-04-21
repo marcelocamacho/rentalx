@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { ICreateRentalDTO } from "../dto/ICreateRentalDTO";
-import { Rental } from "../infra/entities/Rental";
+import { Rental } from "../infra/typeorm/entities/Rental";
 
 interface IRentalsRepository {
     findOpenRentalByCar(car_id: string): Promise<Rental>;

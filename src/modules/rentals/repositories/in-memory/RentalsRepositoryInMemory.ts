@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { ICreateRentalDTO } from "@modules/rentals/dto/ICreateRentalDTO";
-import { Rental } from "@modules/rentals/infra/entities/Rental";
+import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 
 import { IRentalsRepository } from "../IRentalsRepository";
 
