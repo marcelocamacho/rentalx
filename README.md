@@ -49,3 +49,40 @@
 - O aluguel deve ter duração mínima de uma 24 horas.
 - Não deve ser possível cadastrar um novo aluguel caso já exista um aberto para o mesmo usuário;
 - Não deve ser possível cadastrar um novo aluguel caso já exista um aberto para o mesmo carro;
+
+**COMO EXECUTAR**
+```
+# Baixar as dependências
+yarn
+
+# Levantar os containers
+docker-compose up -d
+
+# Criar as tabelas da aplicação
+yarn typeorm migration:run
+
+# Criar o usuário admin da aplicação para executar operações que exigem privilégios
+yarn seed:admin
+
+# Criar a sessão para o usuário
+curl --request POST \
+  --url http://localhost:3333/sessions \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"email": "admin@rentalx.com.br",
+	"password": "admin"
+}'
+
+# O token retornado pode ser utilizado em outras requisições. Por exemplo:
+curl --request POST \
+  --url http://localhost:3333/categories \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTA1NjMyMjMsImV4cCI6MTY1MDY0OTYyMywic3ViIjoiZTE2Y2FmZDUtNTdhZS00MzE2LWFmZTctODdmZDllNTQ2ZWQ4In0.eSojNBUG3IODG_AC236UwTvyiXJfc2ej2GJpeu4y8pM' \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"name": "Utilitários",
+	"description": "Carros para o trabalho"
+}'
+
+
+
+```
