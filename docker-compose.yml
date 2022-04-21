@@ -26,6 +26,7 @@ services:
       - 9229:9229
     volumes:
       - .:/usr/app
+      - /usr/app/node_modules/bcrypt/
     environment:
       DATABASE_URL: postgres://docker:ignite@database_ignite:5432/rentalx
 
