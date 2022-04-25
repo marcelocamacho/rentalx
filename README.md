@@ -83,6 +83,13 @@ curl --request POST \
 	"description": "Carros para o trabalho"
 }'
 
+```
 
+** EXECUTAR TESTES **
+
+Acesse o SGBD que está rodando no docker e execute a seguinte query SQL:
+
+```
+CREATE DATABASE rentx_test;
 
 ```
