@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for accounts/useCases/authenticateUser/AuthenticateUserController.ts</title>
+    <title>Code coverage report for rentals/useCases/CreateRental/CreateRentalController.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">accounts/useCases/authenticateUser</a> AuthenticateUserController.ts</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">rentals/useCases/CreateRental</a> CreateRentalController.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>0/20</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>0/20</span>
             </div>
         
             
@@ -81,7 +81,9 @@
 <a name='L16'></a><a href='#L16'>16</a>
 <a name='L17'></a><a href='#L17'>17</a>
 <a name='L18'></a><a href='#L18'>18</a>
-<a name='L19'></a><a href='#L19'>19</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -99,24 +101,28 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import { Request, Response } from "express";</span></span></span>
-<span class="cstat-no" title="statement not covered" >import { container } from "tsyringe";</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import { Request, Response } from 'express';</span></span></span>
+<span class="cstat-no" title="statement not covered" >import { container } from 'tsyringe';</span>
+<span class="cstat-no" title="statement not covered" >import { CreateRentalUseCase } from './CreateRentalUseCase';</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";</span>
+<span class="cstat-no" title="statement not covered" >class CreateRentalController {</span>
+<span class="cstat-no" title="statement not covered" >    async handle(request: Request, response: Response) {</span>
+<span class="cstat-no" title="statement not covered" >        const { car_id, expected_return_date } = request.body;</span>
+<span class="cstat-no" title="statement not covered" >        const { id } = request.user;</span>
+<span class="cstat-no" title="statement not covered" >        const createRentalUseCase = container.resolve(CreateRentalUseCase);</span>
+<span class="cstat-no" title="statement not covered" >        const rental = await createRentalUseCase.execute({</span>
+<span class="cstat-no" title="statement not covered" >            car_id,</span>
+<span class="cstat-no" title="statement not covered" >            user_id: id,</span>
+<span class="cstat-no" title="statement not covered" >            expected_return_date,</span>
+<span class="cstat-no" title="statement not covered" >        });</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >class AuthenticateUserController {</span>
-<span class="cstat-no" title="statement not covered" >  async handle(request: Request, response: Response): Promise&lt;Response&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    const { password, email } = request.body;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    const authenticateUserUseCase = container.resolve(AuthenticateUserUseCase);</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    const token = await authenticateUserUseCase.execute({ password, email });</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    return response.json(token);</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+<span class="cstat-no" title="statement not covered" >        return response.status(201).json(rental);</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >export { AuthenticateUserController };</span>
+<span class="cstat-no" title="statement not covered" >export { CreateRentalController };</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

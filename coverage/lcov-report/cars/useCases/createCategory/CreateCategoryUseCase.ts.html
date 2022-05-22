@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.14% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>16/28</span>
+                <span class='fraction'>28/28</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.14% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>16/28</span>
+                <span class='fraction'>28/28</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -104,19 +104,19 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { inject, injectable } from "tsyringe";
@@ -131,20 +131,20 @@ interface IRequest {
 &nbsp;
 @injectable()
 class CreateCategoryUseCase {
-<span class="fstat-no" title="function not covered" >  constructor(</span>
-<span class="cstat-no" title="statement not covered" >    @inject("CategoryRepositories")</span>
-<span class="cstat-no" title="statement not covered" >    private categoryRepository: ICategoriesRepository</span>
-<span class="cstat-no" title="statement not covered" >  ) {}</span>
-<span class="fstat-no" title="function not covered" >  async execute({ name, description }: IRequest): Promise&lt;void&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    const categoryAlreadyExists = await this.categoryRepository.findByName(</span>
-<span class="cstat-no" title="statement not covered" >      name</span>
-<span class="cstat-no" title="statement not covered" >    );</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    if (categoryAlreadyExists) {</span>
-<span class="cstat-no" title="statement not covered" >      throw new AppError("Category already exists!");</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
-<span class="cstat-no" title="statement not covered" >    this.categoryRepository.create({ name, description });</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+  constructor(
+    @inject("CategoryRepositories")
+    private categoryRepository: ICategoriesRepository
+  ) {}
+  async execute({ name, description }: IRequest): Promise&lt;void&gt; {
+    const categoryAlreadyExists = await this.categoryRepository.findByName(
+      name
+    );
+&nbsp;
+    if (categoryAlreadyExists) {
+      throw new AppError("Category already exists!");
+    }
+    this.categoryRepository.create({ name, description });
+  }
 }
 export { CreateCategoryUseCase };
 &nbsp;</pre></td></tr></table></pre>
@@ -154,7 +154,7 @@ export { CreateCategoryUseCase };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Tue May 10 2022 17:21:08 GMT-0300 (Horário Padrão de Brasília)
+                at Sun May 22 2022 09:16:26 GMT-0300 (Horário Padrão de Brasília)
             </div>
         <script src="../../../prettify.js"></script>
         <script>
