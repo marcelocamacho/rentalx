@@ -1,34 +1,24 @@
 {
-  "compilerOptions": {
-    //"target": "es5",
-    "target": "es2017",
-    "module": "commonjs",
-    "rootDir": "./",
-    "baseUrl": "./src",
-    "paths": {
-      "@modules/*": [
-        "modules/*"
-      ],
-      "@config/*": [
-        "config/*"
-      ],
-      "@shared/*": [
-        "shared/*"
-      ],
-      "@errors/*": [
-        "errors/*"
-      ],
-      "@utils/*": [
-        "utils/*"
-      ]
-    },
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "outDir": "./dist",
-    "strictPropertyInitialization": false
+    "compilerOptions": {
+      "target": "es5",
+      "module": "commonjs",
+      "rootDir": "./src",
+      "strict": true,
+      "baseUrl": "src",
+      "paths": {
+        "@migrations/*": ["shared/infra/typeorm/migrations/*"],
+        "@config/*": ["config/*"],
+        "@modules/*": ["modules/*"],
+        "@shared/*": ["shared/*"],
+        "@utils/*": ["utils/*"],
+        "swaggerFile": ["swagger.json"]
+      },
+      "esModuleInterop": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "skipLibCheck": true,
+      "strictPropertyInitialization": false,
+      "forceConsistentCasingInFileNames": true,
+      "resolveJsonModule": true
+    }
   }
-}

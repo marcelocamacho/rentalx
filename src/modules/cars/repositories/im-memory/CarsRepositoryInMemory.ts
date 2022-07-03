@@ -8,22 +8,34 @@ class CarsRepositoryInMemory implements ICarsRepository {
 
     async create({
         brand,
+
         category_id,
+
         daily_rate,
+
         description,
+
         fine_amount,
+
         name,
+
         license_plate,
     }: ICreateCarDTO): Promise<Car> {
         const car = new Car();
 
         Object.assign(car, {
             brand,
+
             category_id,
+
             daily_rate,
+
             description,
+
             fine_amount,
+
             name,
+
             license_plate,
         });
 
@@ -34,7 +46,9 @@ class CarsRepositoryInMemory implements ICarsRepository {
 
     async findAvailable(
         brand?: string,
+
         category_id?: string,
+
         name?: string
     ): Promise<Car[]> {
         const all = this.cars.filter(car => {
@@ -46,8 +60,10 @@ class CarsRepositoryInMemory implements ICarsRepository {
             ) {
                 return car;
             }
+
             return null;
         });
+
         return all;
     }
 
@@ -61,8 +77,11 @@ class CarsRepositoryInMemory implements ICarsRepository {
 
     updateAvailable(id: string, available: boolean): Promise<void> {
         const findIndex = this.cars.findIndex(car => car.id === id);
+
         this.cars[findIndex].available = available;
+
         return null;
     }
 }
+
 export { CarsRepositoryInMemory };
