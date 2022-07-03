@@ -6,6 +6,7 @@ import {
   ManyToOne,
   PrimaryColumn,
 } from "typeorm";
+import { v4 as uuidv4 } from "uuid";
 import { User } from "./User";
 
 @Entity("users_tokens")
@@ -23,5 +24,11 @@ class UserTokens {
   @ManyToOne(() => User)
   @JoinColumn({ name: "user_id", referencedColumnName: "id" })
   user: User;
+
+  constructor() {
+    if (!this.id) {
+      this.id = uuidv4();
+    }
+  }
 }
 export { UserTokens };
