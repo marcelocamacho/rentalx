@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { v4 as uuidv4 } from "uuid";
-import dayjs from "dayjs";
+import { resolve } from "path";
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTokensRepository";
 import { AppError } from "@shared/errors/AppError";
@@ -32,10 +32,26 @@ class SendForgotPasswordMailUseCase {
       user_id: user.id,
       expires_date,
     });
+
+    const templatePath = resolve(
+      __dirname,
+      "..",
+      "..",
+      "views",
+      "email",
+      "forgotPassword.hbs"
+    );
+
+    const variables = {
+      name: user.name,
+      link: `${process.env.FORGOT_MAIL_URL}${token}`,
+    };
+
     await this.mailProvider.sendMail(
       email,
       "Recuperação de senha",
-      `O link para o reset é ${token}`
+      templatePath,
+      variables
     );
   }
 }
